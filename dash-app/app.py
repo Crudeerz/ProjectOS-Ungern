@@ -14,17 +14,22 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.DARKLY],
            meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}], use_pages=True)
 
 
-app.layout = dbc.Container(fluid=False, children=[
+app.layout = dbc.Container(fluid=True, children=[
 
 ###################### HEADING ########################
     dbc.Row(justify="center", children=[
-        dbc.Col(
-            dbc.DropdownMenu(label="Menu",
-                children=[
-                        dbc.DropdownMenuItem("Hem", href="/"),
-                        dbc.DropdownMenuItem("Analytics", href="analytics")
-                        ]),
-        ),
+        dbc.Col(children=[
+            dbc.NavbarSimple(children= [               
+                dbc.NavItem(dbc.NavLink("Hem", href="/")),
+                dbc.NavItem(dbc.NavLink("Visualiseringar", href="analytics"))
+
+            ], 
+            color="primary",
+            dark=True,
+            brand="Project OS - Ungern",
+            style={"justify-content":"center"}
+            ),
+        ]),
         page_container
     ])
 ])

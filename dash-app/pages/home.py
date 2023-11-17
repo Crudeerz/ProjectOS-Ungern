@@ -21,8 +21,7 @@ layout = dbc.Container(fluid=False, children=[
     dbc.Row(justify="center", children=[
         dbc.Col(
             children = [
-            html.H1("Data Analys Olympiska Spelen"), 
-            html.H2("Ungern"),
+            html.H1("Data-analys Olympiska Spelen"), 
             ],
             class_name="mt-5 text-center",
             xs=12,sm=12, md=12, lg=12
@@ -67,7 +66,7 @@ layout = dbc.Container(fluid=False, children=[
 ###################### EVENTS TABLE ########################
         dbc.Col(
             children = [
-            dbc.Label("Fil: athletes_events.csv"),
+            dbc.Label("athletes_events.csv"),
             DataTable(
                 df_events.drop(columns="ID").head(50).to_dict("records"),
                 [{"name": i, "id": i} for i in df_events.drop(columns="ID").columns],
@@ -88,7 +87,7 @@ layout = dbc.Container(fluid=False, children=[
 ###################### REGIONS TABLE ########################
         dbc.Col(
             children = [
-            dbc.Label("Fil: noc_regions.csv"),
+            dbc.Label("noc_regions.csv"),
             DataTable(
                 data=df_regions.head(50).to_dict("records"),
                 columns=[{"name": col, "id": col} for col in df_regions.columns],
