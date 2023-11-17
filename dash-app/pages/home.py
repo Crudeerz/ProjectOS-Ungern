@@ -1,6 +1,6 @@
 import pandas as pd
 import plotly.express as px 
-from dash import Dash, html, dcc, callback, Input, Output
+from dash import Dash, html, dcc, callback, Input, Output, register_page
 from dash.dash_table import DataTable
 import dash_bootstrap_components as dbc
 
@@ -12,18 +12,17 @@ df_regions = pd.read_csv("./Data/noc_regions.csv")
 
 
 ###################### DASH APP ########################
-app = Dash(__name__, external_stylesheets=[dbc.themes.DARKLY], 
-           meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}])
+register_page(__name__, path="/")
 
 
-app.layout = dbc.Container(fluid=False, children=[
+layout = dbc.Container(fluid=False, children=[
 
 ###################### HEADING ########################
     dbc.Row(justify="center", children=[
         dbc.Col(
             children = [
             html.H1("Data Analys Olympiska Spelen"), 
-            html.H2("Ungern")
+            html.H2("Ungern"),
             ],
             class_name="mt-5 text-center",
             xs=12,sm=12, md=12, lg=12
@@ -50,11 +49,12 @@ app.layout = dbc.Container(fluid=False, children=[
 
     ]),
 
+
 ###################### HEADING DATASET ########################
     dbc.Row(justify="center", children=[
         dbc.Col(
             children = [
-            html.H4("Nedan kan du se en översikt över dataseten vi har arbetat med:"), 
+            html.H4("Nedan kan man se en översikt över dataseten vi har arbetat med:"), 
             ],
             class_name="mt-5 text-center ",
             xs=12,sm=12, md=12, lg=12
@@ -63,10 +63,8 @@ app.layout = dbc.Container(fluid=False, children=[
 
     ]),
 
-
-###################### DATASET ÖVERSIKT ########################
     dbc.Row(justify="center", children=[
-###################### EVENTS ########################
+###################### EVENTS TABLE ########################
         dbc.Col(
             children = [
             dbc.Label("Fil: athletes_events.csv"),
@@ -74,7 +72,7 @@ app.layout = dbc.Container(fluid=False, children=[
                 df_events.drop(columns="ID").head(50).to_dict("records"),
                 [{"name": i, "id": i} for i in df_events.drop(columns="ID").columns],
                 sort_action="native",
-                page_size=10, 
+                page_size=12, 
                 style_cell={"overflow": "hidden", "text-overflow":"hidden", "maxWidth":"auto"},
                 style_table={"overflowX":"auto"},
                 style_header={"textAlign":"center", "backgroundColor": "rgb(30, 30, 30)", "color": "white"},
@@ -87,7 +85,7 @@ app.layout = dbc.Container(fluid=False, children=[
 
         ), 
 
-###################### REGIONS ########################
+###################### REGIONS TABLE ########################
         dbc.Col(
             children = [
             dbc.Label("Fil: noc_regions.csv"),
@@ -95,7 +93,7 @@ app.layout = dbc.Container(fluid=False, children=[
                 data=df_regions.head(50).to_dict("records"),
                 columns=[{"name": col, "id": col} for col in df_regions.columns],
                 sort_action="native",
-                page_size=10, 
+                page_size=12, 
                 style_cell={"overflow": "hidden", "text-overflow":"hidden", "maxWidth": "auto"},
                 style_table={"overflowX":"auto"},
                 style_header={"textTransform":"capitalize","textAlign":"center", "backgroundColor": "rgb(30, 30, 30)", "color": "white"},
@@ -115,17 +113,3 @@ app.layout = dbc.Container(fluid=False, children=[
 
 
 ])
-
-
-
-
-
-
-
-
-
-
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
