@@ -6,8 +6,8 @@ import dash_bootstrap_components as dbc
 
 
 # Read in datasets to dataframes for visual overview on first page
-df_events = pd.read_csv("./Data/athlete_events.csv")
-df_regions = pd.read_csv("./Data/noc_regions.csv")
+df_events = pd.read_csv("../Data/athlete_events.csv")
+df_regions = pd.read_csv("../Data/noc_regions.csv")
 
 
 

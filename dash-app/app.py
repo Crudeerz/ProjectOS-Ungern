@@ -1,12 +1,7 @@
 import pandas as pd
 from dash import Dash, html, dcc, page_container
 import dash_bootstrap_components as dbc
-
-
-# Read in datasets to dataframes for visual overview on first page
-df_events = pd.read_csv("./Data/athlete_events.csv")
-df_regions = pd.read_csv("./Data/noc_regions.csv")
-
+import socket
 
 
 ###################### DASH APP ########################
@@ -36,8 +31,29 @@ app.layout = dbc.Container(fluid=True, children=[
 
 
 
+def set_dash_host(host=None, port=None):
 
+    '''
+    Set host adress for dash application
 
+    Parameters: 
+    host (string): public for hosting app on public IP-adress
+     
+    Example: 
+    >>> Host = "public": Dash App is hosted on your public IP-adress. 
+    >>> Host = None: Dash App is hosted on localhost 127.0.0.1
+    '''
+
+    if host == "public":
+        host = socket.gethostname()
+        ip = socket.gethostbyname(host)
+        
+    else:  
+        ip = "127.0.0.1" 
+
+    return ip
+
+dash_host = set_dash_host("public")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host=dash_host)
