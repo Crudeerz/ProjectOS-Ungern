@@ -31,6 +31,9 @@ app.layout = dbc.Container(fluid=True, children=[
 
 
 
+
+
+
 def set_dash_host(host=None, port=None):
 
     '''
@@ -53,7 +56,11 @@ def set_dash_host(host=None, port=None):
 
     return ip
 
+
+
 dash_host = set_dash_host("public")
+
+###################### RUN APP ########################
 
 if __name__ == "__main__":
     app.run(debug=True, host=dash_host)
