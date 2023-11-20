@@ -10,6 +10,8 @@ plotly = "*"
 seaborn = "*"
 numpy = "*"
 nbformat = "*"
+dash = "*"
+dash-bootstrap-components = "*"
 
 [dev-packages]
 
