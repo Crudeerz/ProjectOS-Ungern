@@ -16,7 +16,8 @@ app.layout = dbc.Container(fluid=True, children=[
         dbc.Col(children=[
             dbc.NavbarSimple(children= [               
                 dbc.NavItem(dbc.NavLink("Hem", href="/")),
-                dbc.NavItem(dbc.NavLink("Visualiseringar", href="analytics"))
+                dbc.NavItem(dbc.NavLink("Ungern", href="ungern")),
+                dbc.NavItem(dbc.NavLink("Sporter", href="sporter"))
 
             ], 
             color="primary",
