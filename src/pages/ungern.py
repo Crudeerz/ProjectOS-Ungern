@@ -25,7 +25,7 @@ layout = dbc.Container(
             children=[
                 dbc.Col(
                     children=[
-                        html.H2("Visualiseringar"),
+                        html.H2("Visualiseringar Ungern"),
                     ],
                     class_name="mt-5 text-center",
                     xs=12,
@@ -40,7 +40,22 @@ layout = dbc.Container(
             children=[
                 dbc.Col(
                     children=[
-                        dbc.Label(id="u_label_1", children="Graph1"),
+                        html.H3("Lorem ipsum"),
+                        html.P(
+                            """Lorem ipsum används ofta som exempeltext 
+                       inom trycksaksframställning och grafisk design 
+                       för att visa hur till exempel ett dokument kommer 
+                       att se ut när väl den riktiga texten är på plats"""
+                        ),
+                    ],
+                    class_name="my-4 mx-auto",
+                    xs=12,
+                    sm=12,
+                    md=3,
+                    lg=2,
+                ),
+                dbc.Col(
+                    children=[
                         dcc.Dropdown(
                             ["Ungern", "Hela"],
                             "Ungern",
@@ -61,12 +76,33 @@ layout = dbc.Container(
                     class_name="mt-2 mx-auto",
                     xs=12,
                     sm=12,
-                    md=6,
-                    lg=6,
+                    md=9,
+                    lg=10,
+                ),
+            ],
+        ),
+        html.Hr(),
+        dbc.Row(
+            justify="center",
+            children=[
+                dbc.Col(
+                    children=[
+                        html.H3("Lorem ipsum"),
+                        html.P(
+                            """Lorem ipsum används ofta som exempeltext 
+                       inom trycksaksframställning och grafisk design 
+                       för att visa hur till exempel ett dokument kommer 
+                       att se ut när väl den riktiga texten är på plats"""
+                        ),
+                    ],
+                    class_name="my-4 mx-auto",
+                    xs=12,
+                    sm=12,
+                    md=3,
+                    lg=2,
                 ),
                 dbc.Col(
                     children=[
-                        dbc.Label(id="u_label_2", children="Graph2"),
                         dcc.Dropdown(
                             ["Ungern", "Alla"],
                             "Ungern",
@@ -74,7 +110,7 @@ layout = dbc.Container(
                             className="text-secondary-emphasis",
                         ),
                         dcc.Dropdown(
-                            ["Gold", "Silver", "Bronze"],
+                            ["Alla", "Gold", "Silver", "Bronze"],
                             "Alla",
                             id="u_drop_2b",
                             className="text-secondary-emphasis",
@@ -84,52 +120,64 @@ layout = dbc.Container(
                     class_name="mt-2 mx-auto",
                     xs=12,
                     sm=12,
-                    md=6,
-                    lg=6,
+                    md=9,
+                    lg=10,
                 ),
             ],
         ),
+        html.Hr(),
         dbc.Row(
             justify="center",
             children=[
                 dbc.Col(
                     children=[
-                        dbc.Label(id="u_label_3", children="Graph3"),
-                        dcc.Dropdown(
-                            ["Ungern", "Alla"],
-                            "Ungern",
-                            id="u_drop_3a",
-                            className="text-secondary-emphasis",
+                        html.H3("Lorem ipsum"),
+                        html.P(
+                            """Lorem ipsum används ofta som exempeltext 
+                       inom trycksaksframställning och grafisk design 
+                       för att visa hur till exempel ett dokument kommer 
+                       att se ut när väl den riktiga texten är på plats"""
                         ),
-                        dcc.Dropdown(
-                            ["Bronze", "Silver", "Gold"],
-                            "Alla",
-                            id="u_drop_3b",
-                            className="text-secondary-emphasis",
+                    ],
+                    class_name="my-4 mx-auto",
+                    xs=12,
+                    sm=12,
+                    md=3,
+                    lg=2,
+                ),
+                dbc.Col(
+                    children=[
+                        dbc.Col(
+                            dcc.Dropdown(
+                                ["Ungern", "Alla"],
+                                "Ungern",
+                                id="u_drop_3a",
+                                className="text-secondary-emphasis",
+                            ),
+                            xs=6,
+                            sm=6,
+                            md=6,
+                            lg=6,
+                        ),
+                        dbc.Col(
+                            dcc.Dropdown(
+                                ["Alla", "Bronze", "Silver", "Gold"],
+                                "Alla",
+                                id="u_drop_3b",
+                                className="text-secondary-emphasis",
+                            ),
+                            xs=6,
+                            sm=6,
+                            md=6,
+                            lg=6,
                         ),
                         dcc.Graph(className="mt-3", id="u_graph_3", figure={}),
                     ],
                     class_name="mt-2 mx-auto",
                     xs=12,
                     sm=12,
-                    md=6,
-                    lg=6,
-                ),
-                dbc.Col(
-                    children=[
-                        dbc.Label(
-                            id="u_label_4", children="Graph4", class_name="text-center"
-                        ),
-                        dbc.Input(
-                            id="u_input_4", placeholder="Antal länder: ", type="integer"
-                        ),
-                        dcc.Graph(className="mt-2", id="u_graph_4", figure={}),
-                    ],
-                    class_name="mt-2 mx-auto",
-                    xs=12,
-                    sm=12,
-                    md=6,
-                    lg=6,
+                    md=9,
+                    lg=10,
                 ),
             ],
         ),
@@ -207,8 +255,6 @@ def average_age_per_sport(dataset_string, medal):
     medals = ["Gold", "Silver", "Bronze"]
     df_medal = dataset if medal not in medals else dataset.query("Medal == @medal")
 
-    df_medal = dataset if medal not in medals else dataset.query("Medal == @medal")
-
     fig = px.bar(
         df_medal.groupby(["Sport", "Medal"])["Age"].mean().reset_index(),
         x="Sport",
@@ -218,7 +264,7 @@ def average_age_per_sport(dataset_string, medal):
         color_discrete_map=MEDAL_COLOR_MAP,
     )
     fig.update_layout(
-        yaxis_title="Genomsnittlig ålder",
+        yaxis_title="Genomsnittlig ålder" if medal in medals else "",
     )
 
     return fig
