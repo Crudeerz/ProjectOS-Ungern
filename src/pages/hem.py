@@ -3,11 +3,14 @@ import plotly.express as px
 from dash import Dash, html, dcc, callback, Input, Output, register_page
 from dash.dash_table import DataTable
 import dash_bootstrap_components as dbc
+import hashlib as hl
 
 
 # Read in datasets to dataframes for visual overview on first page
 df_events = pd.read_csv("../Data/athlete_events.csv")
 df_regions = pd.read_csv("../Data/noc_regions.csv")
+
+df_events["Name"] = df_events["Name"].apply(lambda name: hl.sha256(name.encode()).hexdigest())
 
 
 ###################### DASH APP ########################
