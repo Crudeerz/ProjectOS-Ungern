@@ -10,7 +10,7 @@ import hashlib as hl
 df_events = pd.read_csv("../Data/athlete_events.csv")
 df_regions = pd.read_csv("../Data/noc_regions.csv")
 
-df_events["Name"] = df_events["Name"].apply(lambda name: hl.sha256(name.encode()).hexdigest())
+df_events_table = df_events.drop(columns=["ID", "Name"]).head(50)
 
 
 ###################### DASH APP ########################
@@ -86,10 +86,10 @@ layout = dbc.Container(
                     children=[
                         dbc.Label("athletes_events.csv"),
                         DataTable(
-                            df_events.drop(columns="ID").head(50).to_dict("records"),
+                            df_events_table.to_dict("records"),
                             [
                                 {"name": i, "id": i}
-                                for i in df_events.drop(columns="ID").columns
+                                for i in df_events_table.columns
                             ],
                             sort_action="native",
                             page_size=12,

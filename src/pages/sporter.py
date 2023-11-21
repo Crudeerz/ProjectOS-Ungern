@@ -36,6 +36,7 @@ layout = dbc.Container(
                 )
             ],
         ),
+        html.Hr(),
         dbc.Row(
             justify="center",
             children=[
@@ -57,20 +58,32 @@ layout = dbc.Container(
                 ),
                 dbc.Col(
                     children=[
-                        dcc.Dropdown(
-                            ["Freestyle Skiing", "Ice Hockey", "Fencing"],
-                            "Fencing",
-                            id="s_drop_1",
-                            className="text-secondary-emphasis",
-                        ),
-                        dcc.RangeSlider(
-                            id="s_slider_1",
-                            step=10,
-                            min=1896,
-                            max=2023,
-                            marks={i: str(i) for i in range(1896, 2023, 20)},
-                            className="mt-2",
-                            value=[1936, 1950],
+                        dbc.Row(
+                            [
+                                dbc.Col([
+                                    dbc.Label("Filtrera på:", class_name="fw-bold"),
+                                    dcc.Dropdown(
+                                        ["Freestyle Skiing", "Ice Hockey", "Fencing"],
+                                        "Fencing",
+                                        id="s_drop_1",
+                                        className="text-secondary-emphasis",
+                                        
+                                ),], width=2
+                            ),
+                                dbc.Col(
+                                    dcc.RangeSlider(
+                                        id="s_slider_1",
+                                        step=10,
+                                        min=1896,
+                                        max=2023,
+                                        marks={
+                                            i: str(i) for i in range(1896, 2023, 20)
+                                        },
+                                        className="mt-2",
+                                        value=[1936, 1950],
+                                    ),width=10
+                                ),
+                            ]
                         ),
                         dcc.Graph(className="mt-2", id="s_graph_1", figure={}),
                     ],

@@ -27,7 +27,7 @@ layout = dbc.Container(
                     children=[
                         html.H2("Visualiseringar Ungern"),
                     ],
-                    class_name="mt-5 text-center",
+                    class_name="my-5 text-center",
                     xs=12,
                     sm=12,
                     md=12,
