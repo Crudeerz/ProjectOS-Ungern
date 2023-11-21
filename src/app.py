@@ -7,6 +7,7 @@ import socket
 ###################### DASH APP ########################
 app = Dash(__name__, external_stylesheets=[dbc.themes.DARKLY], 
            meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}], use_pages=True)
+server = app.server
 
 
 app.layout = dbc.Container(fluid=True, children=[
@@ -64,4 +65,4 @@ dash_host = set_dash_host("public")
 ###################### RUN APP ########################
 
 if __name__ == "__main__":
-    app.run(debug=True, host=dash_host)
+    app.run(debug=True, host=dash_host, port=8071)
