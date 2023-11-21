@@ -88,13 +88,13 @@ layout = dbc.Container(
             children=[
                 dbc.Col(
                     children=[
-                        html.H3("Lorem ipsum"),
+                        html.H3("Åldersgrupper och Medaljer vid OS"),
                         html.P(
                             """Antalet medaljer per åldersgrupp ger insikter om
                                hur olika ålderskategorier presterar inom Olympiska spelen.
                                Vi inkluderade detta för att undersöka möjliga samband mellan ålder
                                och framgång, vilket kan bidra till en djupare förståelse av 
-                               idrottens dynamik och utveckling över tid.""""
+                               idrottens dynamik och utveckling över tid."""
                         ),
                     ],
                     class_name="my-4 mx-auto",
@@ -133,13 +133,15 @@ layout = dbc.Container(
             children=[
                 dbc.Col(
                     children=[
-                        html.H3("Lorem ipsum"),
+                        html.H3("Åldersvariation per Medaljtyp inom Sport"),
+                        
                         html.P(
-                            """Antalet medaljer per åldersgrupp ger insikter om
-                               hur olika ålderskategorier presterar inom Olympiska spelen.
-                       inom trycksaksframställning och grafisk design 
-                       för att visa hur till exempel ett dokument kommer 
-                       att se ut när väl den riktiga texten är på plats"""
+                            """Genomsnittlig ålder för medaljtyp per sport ger perspektiv
+                               på åldern hos idrottare som vinner olika medaljer inom olika sporter.
+                               Det hjälper oss förstå variationen i ålder bland vinnare
+                               och dess eventuella samband med specifika sporter."""
+                            
+                      
                         ),
                     ],
                     class_name="my-4 mx-auto",
