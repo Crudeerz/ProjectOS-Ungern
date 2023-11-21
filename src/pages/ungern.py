@@ -1,5 +1,5 @@
 import pandas as pd
-import plotly.express as px 
+import plotly.express as px
 from dash import Dash, html, dcc, callback, Input, Output, register_page
 from dash.dash_table import DataTable
 import dash_bootstrap_components as dbc
@@ -9,133 +9,216 @@ import dash_bootstrap_components as dbc
 df_events = pd.read_csv("../Data/athlete_events.csv")
 df_regions = pd.read_csv("../Data/noc_regions.csv")
 
+df_hungarian_events = df_events.loc[df_events["NOC"] == "HUN"]
 
 
 ###################### DASH APP ########################
 register_page(__name__)
 
 
-layout = dbc.Container(fluid=False, children=[
-
-###################### HEADING ########################
-    dbc.Row(justify="center", children=[
-        dbc.Col(
-            children = [
-            html.H2("Visualiseringar"),
+layout = dbc.Container(
+    fluid=False,
+    children=[
+        ###################### HEADING ########################
+        dbc.Row(
+            justify="center",
+            children=[
+                dbc.Col(
+                    children=[
+                        html.H2("Visualiseringar"),
+                    ],
+                    class_name="mt-5 text-center",
+                    xs=12,
+                    sm=12,
+                    md=12,
+                    lg=12,
+                )
             ],
-            class_name="mt-5 text-center",
-            xs=12,sm=12, md=12, lg=12
-
-        )
-
-    ]),
-
-    dbc.Row(justify="center", children=[
-        dbc.Col(
-            children = [
-                dbc.Label(id="u_label_1", children="Graph1"), 
-                dbc.Input(id="u_input_1", placeholder="Antal länder: ", type="integer"),
-                dcc.Graph(id="u_graph_1", className="mt-2", figure={})
-            ],
-            class_name="mt-2 mx-auto",
-            xs=12,sm=12, md=6, lg=6
-
-        ), 
-        dbc.Col(
-            children = [
-                dbc.Label(id="u_label_2", children="Graph2"),
-                dbc.Input(id="u_input_2", placeholder="Antal länder att visa: ", type="integer"),
-                dcc.Graph(className="mt-2", id="u_graph_2", figure={})
-            ],
-            class_name="mt-2 mx-auto",
-            xs=12,sm=12, md=6, lg=6
-
         ),
-        
-        
-
-    ]),
-
-    dbc.Row(justify="center", children=[
-        dbc.Col(
-            children = [
-                dbc.Label(id="u_label_3", children="Graph3"),
-                dcc.Dropdown(["Bronze","Silver","Gold"], "Total", 
-                             id="u_drop_3",                              
-                             className="text-secondary-emphasis"),
-                dcc.Graph(className="mt-2", id="u_graph_3", figure={})
+        dbc.Row(
+            justify="center",
+            children=[
+                dbc.Col(
+                    children=[
+                        dbc.Label(id="u_label_1", children="Graph1"),
+                        dcc.Dropdown(
+                            ["Ungern", "Hela"],
+                            "Ungern",
+                            id="u_drop_1",
+                            className="text-secondary-emphasis",
+                        ),
+                        dcc.RangeSlider(
+                            id="u_slider_1",
+                            step=10,
+                            min=1896,
+                            max=2023,
+                            marks={i: str(i) for i in range(1896, 2023, 20)},
+                            className="mt-1",
+                            value=[1896, 2024],
+                        ),
+                        dcc.Graph(id="u_graph_1", className="mt-2", figure={}),
+                    ],
+                    class_name="mt-2 mx-auto",
+                    xs=12,
+                    sm=12,
+                    md=6,
+                    lg=6,
+                ),
+                dbc.Col(
+                    children=[
+                        dbc.Label(id="u_label_2", children="Graph2"),
+                        dcc.Dropdown(
+                            ["Ungern", "Alla"],
+                            "Ungern",
+                            id="u_drop_2a",
+                            className="text-secondary-emphasis",
+                        ),
+                        dcc.Dropdown(
+                            ["Gold", "Silver", "Bronze"],
+                            "Alla",
+                            id="u_drop_2b",
+                            className="text-secondary-emphasis",
+                        ),
+                        dcc.Graph(className="mt-2", id="u_graph_2", figure={}),
+                    ],
+                    class_name="mt-2 mx-auto",
+                    xs=12,
+                    sm=12,
+                    md=6,
+                    lg=6,
+                ),
             ],
-            class_name="mt-2 mx-auto",
-            xs=12,sm=12, md=6, lg=6
-
-        ), 
-        dbc.Col(
-            children = [
-                dbc.Label(id="u_label_4", children="Graph4", class_name="text-center"),
-                dbc.Input(id="u_input_4", placeholder="Antal länder: ", type="integer"),
-                dcc.Graph(className="mt-2", id="u_graph_4", figure={})
-            ],
-            class_name="mt-2 mx-auto",
-            xs=12,sm=12, md=6, lg=6
-
         ),
-        
-        
+        dbc.Row(
+            justify="center",
+            children=[
+                dbc.Col(
+                    children=[
+                        dbc.Label(id="u_label_3", children="Graph3"),
+                        dcc.Dropdown(
+                            ["Ungern", "Alla"],
+                            "Ungern",
+                            id="u_drop_3a",
+                            className="text-secondary-emphasis",
+                        ),
+                        dcc.Dropdown(
+                            ["Bronze", "Silver", "Gold"],
+                            "Alla",
+                            id="u_drop_3b",
+                            className="text-secondary-emphasis",
+                        ),
+                        dcc.Graph(className="mt-3", id="u_graph_3", figure={}),
+                    ],
+                    class_name="mt-2 mx-auto",
+                    xs=12,
+                    sm=12,
+                    md=6,
+                    lg=6,
+                ),
+                dbc.Col(
+                    children=[
+                        dbc.Label(
+                            id="u_label_4", children="Graph4", class_name="text-center"
+                        ),
+                        dbc.Input(
+                            id="u_input_4", placeholder="Antal länder: ", type="integer"
+                        ),
+                        dcc.Graph(className="mt-2", id="u_graph_4", figure={}),
+                    ],
+                    class_name="mt-2 mx-auto",
+                    xs=12,
+                    sm=12,
+                    md=6,
+                    lg=6,
+                ),
+            ],
+        ),
+    ],
+)
 
-    ]),
-
-
-
-
-])
+MEDAL_COLOR_MAP = {
+    "Gold": "rgb(255, 200, 0)",
+    "Silver": "rgb(180, 180, 180)",
+    "Bronze": "rgb(180, 110, 0)",
+}
 
 
 @callback(
     Output("u_graph_1", "figure"),
-    Input("u_input_1", "value"),
-
+    Input("u_drop_1", "value"),
+    Input("u_slider_1", "value"),
 )
-def set_num_of_countries(num):
+def avergage_age_of_medal_winners(dataset_string, years):
+    min_year, max_year = years
 
-    if num is None:
-        num = 10
-    num = int(num)
-    
-    countries = df_events.groupby("NOC").agg({"Medal": "count"}).sort_values(by="Medal", ascending=False)
-    graph = px.bar(countries.head(num), y="Medal",
-             template="seaborn",
-             labels=dict(Medal = "Antal medaljer", Team = "Land"), 
-             title=f"Flest medaljer tagna (Top {num})")
+    dataset = df_hungarian_events if dataset_string == "Ungern" else df_events
 
-    return graph
+    dataset = dataset.query("@min_year <= Year <= @max_year")
+
+    fig = px.line(
+        dataset.groupby("Year")["Age"].mean().reset_index(),
+        x="Year",
+        y="Age",
+        title=f"Genomsnittlig ålder av medaljvinnare över tid ({min_year} - {max_year})",
+    )
+    fig.update_layout(
+        xaxis_title="År",
+        yaxis_title="Genomsnittlig ålder",
+    )
+
+    return fig
 
 
 @callback(
     Output("u_graph_2", "figure"),
-    Input("u_input_2", "value"),
+    Input("u_drop_2a", "value"),
+    Input("u_drop_2b", "value"),
 )
-def set_num_of_countries_2(num):
-    if num is None:
-        num = 5
-    num = int(num)
-    countries = df_events.groupby("NOC").agg({"Medal": "count"}).sort_values(by="Medal", ascending=False)
-    graph = px.bar(countries.head(num), y="Medal",
-             template="seaborn",
-             labels=dict(Medal = "Antal medaljer", Team = "Land"), 
-             title=f"Flest medaljer tagna (Top {num})")
+def number_of_medals_per_age(dataset_string, medal):
+    dataset = df_hungarian_events if dataset_string == "Ungern" else df_events
 
-    return graph
+    medals = ["Gold", "Silver", "Bronze"]
+    df_medal = dataset if medal not in medals else dataset.query("Medal == @medal")
+
+    fig = px.histogram(
+        df_medal,
+        x="Age",
+        color="Medal",
+        title="Antal medaljer per åldersgrupp",
+        color_discrete_map=MEDAL_COLOR_MAP,
+    )
+    fig.update_layout(
+        yaxis_title="Antal medaljer",
+        xaxis_title="Ålder",
+        legend_title_text="Medaljer",
+    )
+
+    return fig
+
 
 @callback(
     Output("u_graph_3", "figure"),
-    Input("u_drop_3", "value"),
+    Input("u_drop_3a", "value"),
+    Input("u_drop_3b", "value"),
 )
-def show_medal_dispersion(medal):
-    medal_not_none = df_events[df_events["Medal"].notna()]
-    medal_counts = medal_not_none.groupby(['NOC', 'Medal']).size().unstack().fillna(0)
-    medal_counts['Total'] = medal_counts.sum(axis=1)
+def average_age_per_sport(dataset_string, medal):
+    dataset = df_hungarian_events if dataset_string == "Ungern" else df_events
 
+    medals = ["Gold", "Silver", "Bronze"]
+    df_medal = dataset if medal not in medals else dataset.query("Medal == @medal")
 
-    graph_3 = px.bar(medal_counts, y=f"{medal}")
-    
-    return graph_3
+    df_medal = dataset if medal not in medals else dataset.query("Medal == @medal")
+
+    fig = px.bar(
+        df_medal.groupby(["Sport", "Medal"])["Age"].mean().reset_index(),
+        x="Sport",
+        y="Age",
+        color="Medal",
+        title="Genomsnittlig ålder för medaljtyp per sport",
+        color_discrete_map=MEDAL_COLOR_MAP,
+    )
+    fig.update_layout(
+        yaxis_title="Genomsnittlig ålder",
+    )
+
+    return fig
