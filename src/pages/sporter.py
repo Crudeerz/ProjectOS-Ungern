@@ -60,16 +60,21 @@ layout = dbc.Container(
                     children=[
                         dbc.Row(
                             [
-                                dbc.Col([
-                                    dbc.Label("Filtrera på:", class_name="fw-bold"),
-                                    dcc.Dropdown(
-                                        ["Freestyle Skiing", "Ice Hockey", "Fencing"],
-                                        "Fencing",
-                                        id="s_drop_1",
-                                        className="text-secondary-emphasis",
-                                        
-                                ),], width=2
-                            ),
+                                dbc.Col(
+                                    [
+                                        dcc.Dropdown(
+                                            [
+                                                "Freestyle Skiing",
+                                                "Ice Hockey",
+                                                "Fencing",
+                                            ],
+                                            "Fencing",
+                                            id="s_drop_1",
+                                            className="text-secondary-emphasis",
+                                        ),
+                                    ],
+                                    width=2,
+                                ),
                                 dbc.Col(
                                     dcc.RangeSlider(
                                         id="s_slider_1",
@@ -81,7 +86,8 @@ layout = dbc.Container(
                                         },
                                         className="mt-2",
                                         value=[1936, 1950],
-                                    ),width=10
+                                    ),
+                                    width=10,
                                 ),
                             ]
                         ),
