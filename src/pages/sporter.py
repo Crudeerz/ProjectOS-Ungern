@@ -98,7 +98,7 @@ layout = dbc.Container(
                                             className="text-secondary-emphasis",
                                         ),
                                     ],
-                                    width=2,
+                                    width=3,
                                 ),
                                 dbc.Col(
                                     dcc.RangeSlider(
@@ -112,7 +112,7 @@ layout = dbc.Container(
                                         className="mt-2",
                                         value=[1936, 1950],
                                     ),
-                                    width=10,
+                                    width=9,
                                 ),
                             ]
                         ),
