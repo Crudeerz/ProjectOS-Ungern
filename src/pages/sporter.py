@@ -26,7 +26,7 @@ layout = dbc.Container(
             children=[
                 dbc.Col(
                     children=[
-                        html.H2("Ishockey, Fäktning och Freestyle - analys"),
+                        html.H2("Ishockey, Fäktning och Freestyle"),
                     ],
                     class_name="my-5 text-center",
                     xs=12,
@@ -42,12 +42,22 @@ layout = dbc.Container(
             children=[
                 dbc.Col(
                     children=[
-                        html.H3("Lorem ipsum"),
+                        html.H3("Medaljer mellan länder i sporterna"),
                         html.P(
-                            """Lorem ipsum används ofta som exempeltext 
-                       inom trycksaksframställning och grafisk design 
-                       för att visa hur till exempel ett dokument kommer 
-                       att se ut när väl den riktiga texten är på plats"""
+                            ['Fäktning:', html.Br(), 
+                            'Tom. 1956: Ungern och Frankrike klar ledning', html.Br(), 
+                            'Tom. 1976: Soviet och Ungern klar ledning', html.Br(), 
+                            'Tom. 1996: Frankrike och Italien närmar sig ledarna', html.Br(), 
+                            'Tom. 2016: Frankrike och Italien går om', html.Br(), 
+                            'Ishockey:', html.Br(), 
+                            'Tom. 1956: USA och Kanada klar ledning', html.Br(), 
+                            'Tom. 1976: Soviet och Tjeckien går om', html.Br(), 
+                            'Tom. 1996: Sverige går om USA', html.Br(), 
+                            'Tom. 2016: USA går om Sverige, Finland fyra', html.Br(), 
+                            'Freestyle:', html.Br(), 
+                            'Tom. 1986: Inga medaljer eftersom grenen är ny', html.Br(), 
+                            'Tom. 1996: Många har lika många medaljer', html.Br(), 
+                            'Tom. 2016: Först här urskiljer sig en tydlig ranking. USA, Kanada och Frankrike top 3, Australien på plats 6.']
                         ),
                     ],
                     class_name="mt-2 mx-auto",
@@ -107,12 +117,11 @@ layout = dbc.Container(
             children=[
                 dbc.Col(
                     children=[
-                        html.H3("Lorem ipsum"),
+                        html.H3("Ålder mellan sporterna"),
                         html.P(
-                            """Lorem ipsum används ofta som exempeltext 
-                                inom trycksaksframställning och grafisk design 
-                                för att visa hur till exempel ett dokument kommer 
-                                att se ut när väl den riktiga texten är på plats"""
+                            ['Tom. 1976: Fler tävlande och högre medelålder i fäktning än i Ishockey.', html.Br(), 
+                            'Tom. 1996: Freestyle får sina första tävlande.', html.Br(),  
+                            '1996 - 2016: Fäktning och ishockey ungefär lika många tävlande och liknande ålder till skillnad från tidigare.']
                         ),
                     ],
                     class_name="my-4 mx-auto",
@@ -148,12 +157,12 @@ layout = dbc.Container(
             children=[
                 dbc.Col(
                     children=[
-                        html.H3("Lorem ipsum"),
+                        html.H3("BMI mellan sporterna"),
                         html.P(
-                            """Lorem ipsum används ofta som exempeltext 
-                                inom trycksaksframställning och grafisk design 
-                                för att visa hur till exempel ett dokument kommer 
-                                att se ut när väl den riktiga texten är på plats"""
+                             ['Tom. 1956: Ishockey och fäktning lika median BMI.', html.Br(),
+                            'Första damerna till ishockey 2006. Fäktning har första damerna mycket tidigare.', html.Br(),
+                            'Nyare tider tydlig skillnad på BMI mellan ishockey och fäktning till skillnad från äldre då de var lika.', html.Br(),
+                            'Fäktning och freestyle liknande BMI.']
                         ),
                     ],
                     class_name="mt-2 mx-auto",
