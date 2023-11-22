@@ -27,7 +27,7 @@ layout = dbc.Container(
                     children=[
                         html.H2("Visualiseringar Ungern"),
                     ],
-                    class_name="mt-5 text-center",
+                    class_name="my-5 text-center",
                     xs=12,
                     sm=12,
                     md=12,
@@ -35,20 +35,22 @@ layout = dbc.Container(
                 )
             ],
         ),
+        html.Hr(),
         dbc.Row(
             justify="center",
             children=[
                 dbc.Col(
                     children=[
-                        html.H3("Lorem ipsum"),
+                        html.H3("Åldersvariation hos Olympiska Medaljvinnare"),
                         html.P(
-                            """Lorem ipsum används ofta som exempeltext 
-                       inom trycksaksframställning och grafisk design 
-                       för att visa hur till exempel ett dokument kommer 
-                       att se ut när väl den riktiga texten är på plats"""
+                            """Detta diagram är inkluderat för att spåra möjliga skiftningar
+                               i åldern hos segrarna över tid under Olympiska spelen. 
+                               Det ger oss en inblick i eventuella trender som kan ha påverkat åldern 
+                               för framstående idrottare. Att förstå dessa förändringar är viktigt för att
+                               analysera hur idrottsvärlden och prestationerna har utvecklats genom åren."""
                         ),
                     ],
-                    class_name="my-4 mx-auto",
+                    class_name="mt-0 mx-auto",
                     xs=12,
                     sm=12,
                     md=3,
@@ -56,20 +58,39 @@ layout = dbc.Container(
                 ),
                 dbc.Col(
                     children=[
-                        dcc.Dropdown(
-                            ["Ungern", "Hela"],
-                            "Ungern",
-                            id="u_drop_1",
-                            className="text-secondary-emphasis",
-                        ),
-                        dcc.RangeSlider(
-                            id="u_slider_1",
-                            step=10,
-                            min=1896,
-                            max=2023,
-                            marks={i: str(i) for i in range(1896, 2023, 20)},
-                            className="mt-1",
-                            value=[1896, 2024],
+                        dbc.Row(
+                            [
+                                dbc.Col(
+                                    [
+                                        dbc.Label("Filtrera på:", class_name="fw-bold"),
+                                        dcc.Dropdown(
+                                            ["Ungern", "Hela"],
+                                            "Ungern",
+                                            id="u_drop_1",
+                                            className="text-secondary-emphasis",
+                                        ),
+                                    ],
+                                    width=2,
+                                ),
+                                dbc.Col(
+                                    [
+                                        dbc.Label("Årsperiod:", class_name="fw-bold"),
+                                        dcc.RangeSlider(
+                                            id="u_slider_1",
+                                            step=10,
+                                            min=1896,
+                                            max=2023,
+                                            marks={
+                                                i: str(i) for i in range(1896, 2023, 20)
+                                            },
+                                            className="mt-3",
+                                            value=[1896, 2024],
+                                        ),
+                                    ],
+                                    width=10,
+                                ),
+                            ],
+                            style={"justify-content": "center"},
                         ),
                         dcc.Graph(id="u_graph_1", className="mt-2", figure={}),
                     ],
@@ -87,15 +108,16 @@ layout = dbc.Container(
             children=[
                 dbc.Col(
                     children=[
-                        html.H3("Lorem ipsum"),
+                        html.H3("Åldersgrupper och Medaljer vid OS"),
                         html.P(
-                            """Lorem ipsum används ofta som exempeltext 
-                       inom trycksaksframställning och grafisk design 
-                       för att visa hur till exempel ett dokument kommer 
-                       att se ut när väl den riktiga texten är på plats"""
+                            """Antalet medaljer per åldersgrupp ger insikter om
+                               hur olika ålderskategorier presterar inom Olympiska spelen.
+                               Vi inkluderade detta för att undersöka möjliga samband mellan ålder
+                               och framgång, vilket kan bidra till en djupare förståelse av 
+                               idrottens dynamik och utveckling över tid."""
                         ),
                     ],
-                    class_name="my-4 mx-auto",
+                    class_name="my-auto mx-auto",
                     xs=12,
                     sm=12,
                     md=3,
@@ -103,17 +125,31 @@ layout = dbc.Container(
                 ),
                 dbc.Col(
                     children=[
-                        dcc.Dropdown(
-                            ["Ungern", "Alla"],
-                            "Ungern",
-                            id="u_drop_2a",
-                            className="text-secondary-emphasis",
-                        ),
-                        dcc.Dropdown(
-                            ["Alla", "Gold", "Silver", "Bronze"],
-                            "Alla",
-                            id="u_drop_2b",
-                            className="text-secondary-emphasis",
+                        dbc.Row(
+                            [
+                                dbc.Col(
+                                    [
+                                        dbc.Label("Filtrera på:", class_name="fw-bold"),
+                                        dcc.Dropdown(
+                                            ["Ungern", "Alla"],
+                                            "Ungern",
+                                            id="u_drop_2a",
+                                            className="text-secondary-emphasis",
+                                        ),
+                                    ]
+                                ),
+                                dbc.Col(
+                                    [
+                                        dbc.Label("Medaljtyp:", class_name="fw-bold"),
+                                        dcc.Dropdown(
+                                            ["Alla", "Gold", "Silver", "Bronze"],
+                                            "Alla",
+                                            id="u_drop_2b",
+                                            className="text-secondary-emphasis",
+                                        ),
+                                    ]
+                                ),
+                            ]
                         ),
                         dcc.Graph(className="mt-2", id="u_graph_2", figure={}),
                     ],
@@ -131,52 +167,57 @@ layout = dbc.Container(
             children=[
                 dbc.Col(
                     children=[
-                        html.H3("Lorem ipsum"),
+                        html.H3("Åldersvariation per Medaljtyp inom Sport"),
+                        
                         html.P(
-                            """Lorem ipsum används ofta som exempeltext 
-                       inom trycksaksframställning och grafisk design 
-                       för att visa hur till exempel ett dokument kommer 
-                       att se ut när väl den riktiga texten är på plats"""
+                            """Genomsnittlig ålder för medaljtyp per sport ger perspektiv
+                               på åldern hos idrottare som vinner olika medaljer inom olika sporter.
+                               Det hjälper oss förstå variationen i ålder bland vinnare
+                               och dess eventuella samband med specifika sporter."""
+                            
+                      
                         ),
                     ],
                     class_name="my-4 mx-auto",
                     xs=12,
                     sm=12,
-                    md=3,
+                    md=2,
                     lg=2,
                 ),
                 dbc.Col(
                     children=[
-                        dbc.Col(
-                            dcc.Dropdown(
-                                ["Ungern", "Alla"],
-                                "Ungern",
-                                id="u_drop_3a",
-                                className="text-secondary-emphasis",
-                            ),
-                            xs=6,
-                            sm=6,
-                            md=6,
-                            lg=6,
+                        dbc.Row(
+                            children=[
+                                dbc.Col(
+                                    [
+                                        dbc.Label("Filtrera på:", class_name="fw-bold"),
+                                        dcc.Dropdown(
+                                            ["Ungern", "Alla"],
+                                            "Ungern",
+                                            id="u_drop_3a",
+                                            className="text-secondary-emphasis",
+                                        ),
+                                    ],
+                                ),
+                                dbc.Col(
+                                    [
+                                        dbc.Label("Medaljtyp:", class_name="fw-bold"),
+                                        dcc.Dropdown(
+                                            ["Alla", "Bronze", "Silver", "Gold"],
+                                            "Alla",
+                                            id="u_drop_3b",
+                                            className="text-secondary-emphasis",
+                                        ),
+                                    ],
+                                ),
+                            ],
                         ),
-                        dbc.Col(
-                            dcc.Dropdown(
-                                ["Alla", "Bronze", "Silver", "Gold"],
-                                "Alla",
-                                id="u_drop_3b",
-                                className="text-secondary-emphasis",
-                            ),
-                            xs=6,
-                            sm=6,
-                            md=6,
-                            lg=6,
-                        ),
-                        dcc.Graph(className="mt-3", id="u_graph_3", figure={}),
+                        dcc.Graph(className="my-3", id="u_graph_3", figure={}),
                     ],
                     class_name="mt-2 mx-auto",
                     xs=12,
                     sm=12,
-                    md=9,
+                    md=10,
                     lg=10,
                 ),
             ],
