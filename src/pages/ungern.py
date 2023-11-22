@@ -53,8 +53,8 @@ layout = dbc.Container(
                     class_name="mt-0 mx-auto",
                     xs=12,
                     sm=12,
-                    md=3,
-                    lg=2,
+                    md=12,
+                    lg=3,
                 ),
                 dbc.Col(
                     children=[
@@ -97,8 +97,8 @@ layout = dbc.Container(
                     class_name="mt-2 mx-auto",
                     xs=12,
                     sm=12,
-                    md=9,
-                    lg=10,
+                    md=12,
+                    lg=9,
                 ),
             ],
         ),
@@ -117,11 +117,11 @@ layout = dbc.Container(
                                idrottens dynamik och utveckling över tid."""
                         ),
                     ],
-                    class_name="my-auto mx-auto",
+                    class_name="mt-0 mx-auto",
                     xs=12,
                     sm=12,
-                    md=3,
-                    lg=2,
+                    md=12,
+                    lg=3,
                 ),
                 dbc.Col(
                     children=[
@@ -156,8 +156,8 @@ layout = dbc.Container(
                     class_name="mt-2 mx-auto",
                     xs=12,
                     sm=12,
-                    md=9,
-                    lg=10,
+                    md=12,
+                    lg=9,
                 ),
             ],
         ),
@@ -168,21 +168,18 @@ layout = dbc.Container(
                 dbc.Col(
                     children=[
                         html.H3("Åldersvariation per Medaljtyp inom Sport"),
-                        
                         html.P(
                             """Genomsnittlig ålder för medaljtyp per sport ger perspektiv
                                på åldern hos idrottare som vinner olika medaljer inom olika sporter.
                                Det hjälper oss förstå variationen i ålder bland vinnare
-                               och dess eventuella samband med specifika sporter."""
-                            
-                      
+                               och dess eventuella samband med specifika sporter.""",
                         ),
                     ],
-                    class_name="my-4 mx-auto",
+                    class_name="mt-0 mx-auto",
                     xs=12,
                     sm=12,
-                    md=2,
-                    lg=2,
+                    md=12,
+                    lg=3,
                 ),
                 dbc.Col(
                     children=[
@@ -217,8 +214,8 @@ layout = dbc.Container(
                     class_name="mt-2 mx-auto",
                     xs=12,
                     sm=12,
-                    md=10,
-                    lg=10,
+                    md=12,
+                    lg=9,
                 ),
             ],
         ),

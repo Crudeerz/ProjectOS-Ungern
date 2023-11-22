@@ -43,7 +43,10 @@ layout = dbc.Container(
                 dbc.Col(
                     children=[
                         html.H5(
-                            "Välkommen till vår Dash-app! Vi har analyserat över 120 års olympisk data, med extra fokus på Ungern. Utforska våra visualiseringar för att få en djupare förståelse av Ungerns unika bidrag till OS-historien."
+                            """Välkommen till vår Dash-app! 
+                            Vi har analyserat över 120 års olympisk data, 
+                            med extra fokus på Ungern. Utforska våra visualiseringar 
+                            för att få en djupare förståelse av Ungerns unika bidrag till OS-historien."""
                         ),
                         dcc.Link(
                             target="_blank",
@@ -67,7 +70,8 @@ layout = dbc.Container(
                 dbc.Col(
                     children=[
                         html.H4(
-                            "Nedan kan man se en översikt över dataseten vi har arbetat med:"
+                            """Nedan kan man se ett urval från 
+                                dataseten vi har arbetat med """,
                         ),
                     ],
                     class_name="mt-5 text-center ",
@@ -84,13 +88,13 @@ layout = dbc.Container(
                 ###################### EVENTS TABLE ########################
                 dbc.Col(
                     children=[
-                        dbc.Label("athletes_events.csv"),
+                        dbc.Label(
+                            "Kolumnerna Namn och ID, är bortfiltrerade från: athletes_events.csv",
+                            class_name="fst-italic",
+                        ),
                         DataTable(
                             df_events_table.to_dict("records"),
-                            [
-                                {"name": i, "id": i}
-                                for i in df_events_table.columns
-                            ],
+                            [{"name": i, "id": i} for i in df_events_table.columns],
                             sort_action="native",
                             page_size=12,
                             style_cell={
