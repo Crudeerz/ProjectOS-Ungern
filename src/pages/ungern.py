@@ -41,23 +41,6 @@ layout = dbc.Container(
             children=[
                 dbc.Col(
                     children=[
-                        html.H3("Åldersvariation hos Olympiska Medaljvinnare"),
-                        html.P(
-                            """Detta diagram är inkluderat för att spåra möjliga skiftningar
-                               i åldern hos segrarna över tid under Olympiska spelen. 
-                               Det ger oss en inblick i eventuella trender som kan ha påverkat åldern 
-                               för framstående idrottare. Att förstå dessa förändringar är viktigt för att
-                               analysera hur idrottsvärlden och prestationerna har utvecklats genom åren."""
-                        ),
-                    ],
-                    class_name="mt-0 mx-auto",
-                    xs=12,
-                    sm=12,
-                    md=12,
-                    lg=3,
-                ),
-                dbc.Col(
-                    children=[
                         dbc.Row(
                             [
                                 dbc.Col(
@@ -98,7 +81,7 @@ layout = dbc.Container(
                     xs=12,
                     sm=12,
                     md=12,
-                    lg=9,
+                    lg=12,
                 ),
             ],
         ),
@@ -106,23 +89,6 @@ layout = dbc.Container(
         dbc.Row(
             justify="center",
             children=[
-                dbc.Col(
-                    children=[
-                        html.H3("Åldersgrupper och Medaljer vid OS"),
-                        html.P(
-                            """Antalet medaljer per åldersgrupp ger insikter om
-                               hur olika ålderskategorier presterar inom Olympiska spelen.
-                               Vi inkluderade detta för att undersöka möjliga samband mellan ålder
-                               och framgång, vilket kan bidra till en djupare förståelse av 
-                               idrottens dynamik och utveckling över tid."""
-                        ),
-                    ],
-                    class_name="mt-0 mx-auto",
-                    xs=12,
-                    sm=12,
-                    md=12,
-                    lg=3,
-                ),
                 dbc.Col(
                     children=[
                         dbc.Row(
@@ -157,7 +123,7 @@ layout = dbc.Container(
                     xs=12,
                     sm=12,
                     md=12,
-                    lg=9,
+                    lg=12,
                 ),
             ],
         ),
@@ -165,22 +131,6 @@ layout = dbc.Container(
         dbc.Row(
             justify="center",
             children=[
-                dbc.Col(
-                    children=[
-                        html.H3("Åldersvariation per Medaljtyp inom Sport"),
-                        html.P(
-                            """Genomsnittlig ålder för medaljtyp per sport ger perspektiv
-                               på åldern hos idrottare som vinner olika medaljer inom olika sporter.
-                               Det hjälper oss förstå variationen i ålder bland vinnare
-                               och dess eventuella samband med specifika sporter.""",
-                        ),
-                    ],
-                    class_name="mt-0 mx-auto",
-                    xs=12,
-                    sm=12,
-                    md=12,
-                    lg=3,
-                ),
                 dbc.Col(
                     children=[
                         dbc.Row(
@@ -215,7 +165,7 @@ layout = dbc.Container(
                     xs=12,
                     sm=12,
                     md=12,
-                    lg=9,
+                    lg=12,
                 ),
             ],
         ),
